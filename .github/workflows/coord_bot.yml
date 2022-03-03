@@ -1,0 +1,26 @@
+name: coord_bot
+on:
+  schedule:
+  - cron: '*/15 * * * *'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  tweet-tweet:
+    runs-on: macOS-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Running...
+        run: echo Running GitHub actions
+      - name: Install rtweet package
+        run: Rscript -e 'install.packages("rtweet", dependencies = TRUE)'
+      - name: Create and post tweet
+        run: Rscript coord_bot.R
+        env:
+          COORD_BOT_TWITTER_CONSUMER_API_KEY: ${{ secrets.COORD_BOT_TWITTER_CONSUMER_API_KEY }}
+          COORD_BOT_TWITTER_CONSUMER_API_SECRET: ${{ secrets.COORD_BOT_TWITTER_CONSUMER_API_SECRET }}
+          COORD_BOT_TWITTER_ACCESS_TOKEN: ${{ secrets.COORD_BOT_TWITTER_ACCESS_TOKEN }}
+          COORD_BOT_TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.COORD_BOT_TWITTER_ACCESS_TOKEN_SECRET }}
+          MAPQUEST_API_TOKEN: ${{ secrets.MAPQUEST_API_TOKEN }}
