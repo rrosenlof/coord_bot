@@ -12,10 +12,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Running...
-        run: echo Running GitHub actions
       - name: Install rtweet package
         run: Rscript -e 'install.packages("rtweet", dependencies = TRUE)'
+      - name: Install rjson package
+        run: Rscript -e 'install.packages("rjson", dependencies = TRUE)'
       - name: Create and post tweet
         run: Rscript coord_bot.R
         env:
