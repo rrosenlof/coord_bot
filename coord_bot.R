@@ -3,9 +3,9 @@ library("rjson")
 
 # Grab Coord
 coords <- fromJSON(file="./coords.json")
-coord <- sample(coords, 1)
-lat <- coord[1]
-long <- coord[2]
+coord <- sample(coords, 1) # TODO: Ensure no repeats -> remove coord from list?
+lat <- coord[["latitude"]]
+long <- coord[["longitude"]]
 
 # Get Image
 zoom <- 17

@@ -1,7 +1,7 @@
 name: coord_bot
 on:
   schedule:
-  - cron: '*/15 * * * *'
+  - cron: '*/10 * * * *'
 
 jobs:
   tweet-tweet:
