@@ -15,7 +15,7 @@ api_key <- Sys.getenv("MAPQUEST_API_TOKEN")
     
 (img_url <- paste0(
   "https://www.mapquestapi.com/staticmap/v5/map?key=#",api_key,
-  "&center=#",paste0(lon, ",", lat),
+  "&center=#",paste0(lat, ",", long),
   "&zoom=",zoom,
   "&scalebar=false&traffic=false&size=",paste0(w, ",", h),
   "@2x&type=sat"
