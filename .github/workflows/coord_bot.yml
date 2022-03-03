@@ -5,7 +5,7 @@ on:
 
 jobs:
   tweet-tweet:
-    runs-on: macOS-latest
+    runs-on: macos-latest
     env:
       COORD_BOT_TWITTER_CONSUMER_API_KEY: ${{ secrets.COORD_BOT_TWITTER_CONSUMER_API_KEY }}
       COORD_BOT_TWITTER_CONSUMER_API_SECRET: ${{ secrets.COORD_BOT_TWITTER_CONSUMER_API_SECRET }}
@@ -13,9 +13,7 @@ jobs:
       COORD_BOT_TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.COORD_BOT_TWITTER_ACCESS_TOKEN_SECRET }}
       MAPQUEST_API_TOKEN: ${{ secrets.MAPQUEST_API_TOKEN }}
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
       - name: Install rtweet package
         run: Rscript -e 'install.packages("rtweet", dependencies = TRUE)'
       - name: Install rjson package
