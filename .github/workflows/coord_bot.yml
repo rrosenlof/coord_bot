@@ -14,10 +14,9 @@ jobs:
       MAPQUEST_API_TOKEN: ${{ secrets.MAPQUEST_API_TOKEN }}
     steps:
       - uses: actions/checkout@v2
-      - name: Install rtweet package
-        run: Rscript -e 'install.packages("rtweet", dependencies = TRUE)'
-      - name: Install rjson package
-        run: Rscript -e 'install.packages("rjson", dependencies = TRUE)'
+      - uses: r-lib/actions/setup-r@master
+      - name: Install rtweet & rjson packages
+        run: Rscript -e 'install.packages(c("rtweet", "rjson"), dependencies = TRUE)'
       - name: Create and post tweet
         run: Rscript coord_bot.R
         
