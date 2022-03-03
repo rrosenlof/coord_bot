@@ -1,8 +1,11 @@
 library("rtweet")
+library("rjson")
 
-# Grab Coord – TODO
-lat <- "30.329288"
-long <- "-87.653162"
+# Grab Coord
+coords <- fromJSON(file="./coords.json")
+coord <- sample(coords, 1)
+lat <- coord[1]
+long <- coord[2]
 
 # Get Image
 zoom <- 17
