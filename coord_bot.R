@@ -2,7 +2,7 @@ library("rtweet")
 library("jsonlite")
 
 # Grab Coord
-coords <- read_json("./coords.json")
+coords <- jsonlite::read_json("./coords.json")
 coord <- sample(coords, 1) # TODO: Ensure no repeats -> remove coord from list?
 lat <- coord[['latitude']]
 long <- coord[['longitude']]
