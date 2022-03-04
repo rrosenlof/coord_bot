@@ -1,14 +1,15 @@
 library("rtweet")
-library("jsonlite")
+library("rjson")
 
 # Grab Coord
-coords <- jsonlite::read_json("./coords.json")
+coords <- fromJSON(file="./coords.json", simplify=FALSE)
 coord <- sample(coords, 1) # TODO: Ensure no repeats -> remove coord from list?
-lat <- coord[['latitude']]
-long <- coord[['longitude']]
+lat <- coord[[1]][['latitude']]
+long <- coord[[1]][['longitude']]
+print(paste0("LAT: ", lat, " & LONG: ", long))
 
 # Get Image
-zoom <- 16
+zoom <- 14
 w <- 600
 h <- 600
 api_key <- Sys.getenv("MAPQUEST_API_TOKEN")
