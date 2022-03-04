@@ -4,11 +4,11 @@ library("rjson")
 # Grab Coord
 coords <- fromJSON(file="./coords.json")
 coord <- sample(coords, 1) # TODO: Ensure no repeats -> remove coord from list?
-lat <- coord[["latitude"]]
-long <- coord[["longitude"]]
+lat <- coord[[1]]
+long <- coord[[2]]
 
 # Get Image
-zoom <- 17
+zoom <- 16
 w <- 600
 h <- 600
 api_key <- Sys.getenv("MAPQUEST_API_TOKEN")
