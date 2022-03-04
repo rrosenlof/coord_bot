@@ -1,5 +1,5 @@
 library("rtweet")
-library("rjson")
+library("jsonlite")
 
 # Grab Coord
 coords <- fromJSON(file="./coords.json")
