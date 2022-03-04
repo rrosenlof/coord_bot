@@ -4,7 +4,6 @@ library("rjson")
 # Grab Coord
 coords <- fromJSON(file="./coords.json")
 coord <- sample(coords, 1) # TODO: Ensure no repeats -> remove coord from list?
-print(toString(coord[['latitude']]))
 lat <- toString(coord[['latitude']])
 long <- toString(coord[['longitude']])
 
@@ -22,6 +21,8 @@ api_key <- Sys.getenv("MAPQUEST_API_TOKEN")
   "@2x&type=sat"
 ))
 
+print(img_url)
+
 # Save in temp
 temp_file <- tempfile()
 download.file(img_url, temp_file)
@@ -38,7 +39,7 @@ coord_bot_token <- rtweet::create_token(
 
 # Post Tweet
 rtweet::post_tweet(
-  status = paste0("Where am I?\nCoordbot image for ",Sys.Date, "\n#coordbot"),
+  status = paste0("Where am I?\nCoordbot image for ",format(Sys.Date(), format="%b %d %Y"), "\n#coordbot"),
   media = temp_file,
   token = coord_bot_token
 )
