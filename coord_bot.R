@@ -34,13 +34,13 @@ coord_bot_token <- rtweet::create_token(
   consumer_key = Sys.getenv("COORD_BOT_TWITTER_CONSUMER_API_KEY"),
   consumer_secret = Sys.getenv("COORD_BOT_TWITTER_CONSUMER_API_SECRET"),
   access_token = Sys.getenv("COORD_BOT_TWITTER_ACCESS_TOKEN"),
-  access_secret = Sys.getenv("COORD_BOT_TWITTER_ACCESS_TOKEN_SECRET"),
-  set_renv = FALSE
+  access_secret = Sys.getenv("COORD_BOT_TWITTER_ACCESS_TOKEN_SECRET")
 )
 
 # Post Tweet
+today = format(Sys.Date(), format="%b %d %Y")
 rtweet::post_tweet(
-  status = paste0("Where am I?\nCoordbot image for ",format(Sys.Date(), format="%b %d %Y"), "\n#coordbot"),
+  status = paste0("Where am I?\nCoordbot image for ", today, "\n#coordbot"),
   media = temp_file,
   token = coord_bot_token
 )
