@@ -4,11 +4,9 @@ library("rjson")
 # Grab Coord
 coords <- fromJSON(file="./coords.json")
 coord <- sample(coords, 1) # TODO: Ensure no repeats -> remove coord from list?
-print(coord)
-print(coord[[1]])
-print(coord[['latitude']])
-lat <- coord[[1]]
-long <- coord[[1]]
+print(toString(coord[['latitude']]))
+lat <- toString(coord[['latitude']])
+long <- toString(coord[['longitude']])
 
 # Get Image
 zoom <- 16
@@ -17,8 +15,8 @@ h <- 600
 api_key <- Sys.getenv("MAPQUEST_API_TOKEN")
     
 (img_url <- paste0(
-  "https://www.mapquestapi.com/staticmap/v5/map?key=#",api_key,
-  "&center=#",paste0(lat, ",", long),
+  "https://www.mapquestapi.com/staticmap/v5/map?key=",api_key,
+  "&center=",paste0(lat, ",", long),
   "&zoom=",zoom,
   "&scalebar=false&traffic=false&size=",paste0(w, ",", h),
   "@2x&type=sat"
